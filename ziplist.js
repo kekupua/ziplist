@@ -3,12 +3,8 @@ const testData2 = ['a','b','c','d','e'];
 
 function zipList(list1, list2){
   let merged = [];
-  let j = 0;
   for(let i = 0; i < list1.length; i++){
-    merged[j] = list1[i];
-    j++;
-    merged[j] = list2[i];
-    j++;
+    merged.push(list1[i],list2[i]);
   }
   return merged;
 }
@@ -16,13 +12,7 @@ function zipList(list1, list2){
 console.log(zipList(testData1,testData2));
 
 function zipListTheEasyWay(list1, list2){
-  let merged = [];
-  let index = 0;
-  _.each(list1, function(element){
-    merged.push(element);
-    merged.push(list2[index]);
-    index++;
-  });
+  const merged = _.flatten(_.zip(list1,list2));
   return merged;
 }
 
